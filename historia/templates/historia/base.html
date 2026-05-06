@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Nuestra Historia{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'historia/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+    <!-- Menú de navegación (Oculto inicialmente con la clase seccion-oculta) -->
+    <nav class="navbar seccion-oculta" id="menu-principal">
+        <a href="{% url 'bienvenida' %}" class="nav-logo">Nosotros</a>
+        <ul class="nav-links">
+            <li><a href="{% url 'bienvenida' %}">Historia</a></li>
+            <li><a href="#">Playlist</a></li>
+            <li><a href="#">Mapa</a></li>
+        </ul>
+    </nav>
+
+    <!-- Este es el hueco donde inyectaremos el contenido de cada página -->
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>

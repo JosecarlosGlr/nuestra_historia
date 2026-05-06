@@ -1,0 +1,69 @@
+{% extends 'historia/base.html' %}
+{% load static %}
+
+{% block content %}
+    <!-- Contenedor para centrar solo la tarjeta inicial -->
+    <div id="pantalla-inicio" class="contenedor-pantalla-completa">
+        <div class="tarjeta-bienvenida">
+            <h1>Nuestra Historia</h1>
+            <p>Tengo algo preparado para ti...</p>
+            <button class="btn-entrar" id="btn-comenzar">Abrir regalo</button>
+
+            <audio id="musica-fondo" preload="auto"></audio>
+        </div>
+    </div>
+
+    <!-- Contenido Principal (La Línea de Tiempo) -->
+    <div id="contenido-principal" class="seccion-oculta">
+        <div class="cabecera-historia">
+            <h2 class="titulo-historia">Nuestros Momentos</h2>
+            <p class="subtitulo-historia">Cada paso que hemos dado...</p>
+        </div>
+
+        <div class="timeline">
+            <!-- Momento de prueba 1 -->
+            <div class="timeline-item">
+                <div class="timeline-punto"></div>
+                <a href="#" class="timeline-contenido">
+                    <span class="timeline-fecha">12 de Octubre</span>
+                    <h3>El día que nos conocimos</h3>
+                    <img src="https://picsum.photos/400/300?random=1" alt="Recuerdo" class="timeline-foto">
+                    <p>Ese café duró tres horas y me parecieron cinco minutos. Ahí supe que esto iba a ser especial.</p>
+                </a>
+            </div>
+
+            <!-- Momento de prueba 2 -->
+            <div class="timeline-item">
+                <div class="timeline-punto"></div>
+                <a href="#" class="timeline-contenido">
+                    <span class="timeline-fecha">31 de Diciembre</span>
+                    <h3>Nuestro primer viaje</h3>
+                    <img src="https://picsum.photos/400/300?random=2" alt="Recuerdo" class="timeline-foto">
+                    <p>Perdernos por aquellas calles fue la mejor excusa para no soltarnos de la mano.</p>
+                </a>
+            </div>
+
+            <!-- El bloque del futuro -->
+            <div class="timeline-item">
+                <div class="timeline-punto punto-final"></div>
+                <div class="timeline-final">
+                    <h3>Y todo lo que nos queda por vivir...</h3>
+                    <p>Nuestra historia solo acaba de empezar. 🤍</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const nuestraPlaylist = [
+            "{% static 'historia/musica/506.mp3' %}",
+            "{% static 'historia/musica/Antes de Perderte.mp3' %}",
+            "{% static 'historia/musica/Me Voy Enamorando.mp3' %}",
+            "{% static 'historia/musica/Supersubmarina.mp3' %}",
+            "{% static 'historia/musica/Te Entiendo.mp3' %}"
+        ];
+    </script>
+
+    <script src="{% static 'historia/js/script.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,296 @@
+/* --- Reset básico para que se vea igual en todos los móviles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- Estilos generales del fondo --- */
+body {
+    /* Un rosa pastel muy clarito y elegante */
+    background-color: #fcf3f5; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    overflow-x: hidden; /* Evita el scroll horizontal en móviles */
+}
+
+/* --- Centrado exclusivo para la tarjeta inicial --- */
+.contenedor-pantalla-completa {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* --- La tarjeta de bienvenida --- */
+.tarjeta-bienvenida {
+    padding: 50px 40px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    max-width: 90%;
+    width: 400px;
+    animation: fadeIn 1s ease-out;
+}
+
+/* --- Textos de Bienvenida --- */
+.tarjeta-bienvenida h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5em;
+    background: linear-gradient(to right, #d6336c, #ff8787);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 15px;
+}
+
+.tarjeta-bienvenida p {
+    font-family: 'Playfair Display', serif;
+    color: #666;
+    margin-bottom: 35px;
+    font-size: 1.2em;
+    font-style: italic;
+}
+
+/* --- El botón (Preparado para móvil y PC) --- */
+.btn-entrar {
+    background-color: #d6336c;
+    color: white;
+    border: none;
+    padding: 15px 35px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(214, 51, 108, 0.3);
+}
+
+.btn-entrar:hover {
+    background-color: #a61e4d;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(214, 51, 108, 0.4);
+}
+
+/* --- Animaciones de transición (Pantallas) --- */
+.seccion-oculta {
+    display: none;
+    opacity: 0;
+}
+
+.fade-out {
+    animation: fadeOutUp 0.8s forwards;
+}
+
+.fade-in {
+    display: block !important;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOutUp {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(-20px); }
+}
+
+/* --- Cabecera de la historia --- */
+.cabecera-historia {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.titulo-historia {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5em;
+    color: #d6336c;
+    margin-bottom: 5px;
+}
+
+.subtitulo-historia {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #888;
+}
+
+/* --- Estructura de la Línea de Tiempo --- */
+.timeline {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* La línea vertical central */
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #ffb3c6;
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    border-radius: 2px;
+}
+
+/* Cada bloque de recuerdo */
+.timeline-item {
+    padding: 10px 0 30px 40px;
+    position: relative;
+    width: 100%;
+}
+
+/* El circulito en la línea de tiempo */
+.timeline-punto {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 32px;
+    top: 15px;
+    background-color: #d6336c;
+    border: 4px solid #fff;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 10px rgba(214, 51, 108, 0.3);
+}
+
+/* --- La tarjeta del recuerdo (Como enlace interactivo) --- */
+.timeline-contenido {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.timeline-contenido:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 25px rgba(214, 51, 108, 0.15);
+}
+
+.timeline-contenido:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* --- Contenido INTERNO de la tarjeta de recuerdo --- */
+.timeline-fecha {
+    display: inline-block;
+    background-color: #ffe6ea;
+    color: #d6336c;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.timeline-contenido h3 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.timeline-foto {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    object-fit: cover;
+    max-height: 250px;
+}
+
+.timeline-contenido p {
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 0.95em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 0;
+}
+
+/* --- Estilos para el bloque final (Futuro) --- */
+.punto-final {
+    background-color: transparent;
+    border: 4px solid #d6336c;
+    animation: latido 2s infinite;
+}
+
+.timeline-final {
+    padding: 10px 0 30px 40px;
+    text-align: left;
+}
+
+.timeline-final h3 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    color: #d6336c;
+    margin-bottom: 5px;
+}
+
+.timeline-final p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #888;
+    font-size: 1.1em;
+}
+
+/* Animación del latido para el punto final */
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); box-shadow: 0 0 10px rgba(214, 51, 108, 0.5); }
+    100% { transform: scale(1); }
+}
+
+/* --- Barra de Navegación --- */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.85); /* Blanco semi-transparente */
+    backdrop-filter: blur(10px); /* Efecto cristal para que se vea moderno */
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 15px rgba(214, 51, 108, 0.05); /* Sombra rosada muy sutil */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-logo {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2em;
+    color: #d6336c;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #d6336c; /* Se pone rosa oscuro al pasar el ratón */
+}
+
+/* Ajuste para móviles: menú más compacto */
+@media (max-width: 600px) {
+    .navbar { padding: 15px; }
+    .nav-links { gap: 10px; }
+    .nav-links a { font-size: 0.9em; }
+}
