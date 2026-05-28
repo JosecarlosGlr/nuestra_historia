@@ -1,0 +1,59 @@
+{% extends 'historia/base.html' %}
+
+{% block content %}
+<div class="contenedor-formulario" style="max-width: 600px; margin: 40px auto; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-family: 'Segoe UI', sans-serif;">
+    <h2 style="color: #d6336c; text-align: center; margin-bottom: 25px; font-weight: 600;">✨ Añadir Nuevo Recuerdo</h2>
+    
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 15px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">Título del Momento:</label>
+            <input type="text" name="titulo" placeholder="Ej: Nuestro primer viaje juntos" style="width: 95%; padding: 10px; border: 1px solid #ced4da; border-radius: 8px;" required>
+        </div>
+        
+        <div style="margin-bottom: 25px;">
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; color: #495057;">¿Qué día fue?</label>
+            <input type="date" name="fecha" style="width: 95%; padding: 10px; border: 1px solid #ced4da; border-radius: 8px;" required>
+        </div>
+        
+        <hr style="border: 0; border-top: 1px solid #f1f3f5; margin-bottom: 25px;">
+        
+        <h3 style="color: #495057; font-size: 1.1em; margin-bottom: 15px;">📸 Fotos y Vídeos de este día</h3>
+        
+        <div id="contenedor-multimedia">
+            <div class="bloque-multimedia" style="background: #fff0f3; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px dashed #ffb3c6;">
+                <label style="display: block; font-size: 0.9em; margin-bottom: 5px; font-weight: bold; color: #d6336c;">Selecciona un archivo:</label>
+                <input type="file" name="archivos" accept="image/*,video/*" style="margin-bottom: 10px;" required>
+                
+                <input type="text" name="pies_de_foto" placeholder="Escribe un pie de foto o recuerdo bonito..." style="width: 93%; padding: 8px; border: 1px solid #ced4da; border-radius: 6px; font-size: 0.9em;">
+            </div>
+        </div>
+        
+        <button type="button" id="btn-añadir-mas" style="background: #f8f9fa; border: 1px solid #ced4da; padding: 8px 15px; border-radius: 8px; cursor: pointer; color: #495057; font-weight: 500; margin-bottom: 30px; transition: 0.2s;">
+            ➕ Añadir otra foto o vídeo
+        </button>
+        
+        <button type="submit" style="display: block; width: 100%; background: #d6336c; color: white; border: none; padding: 12px; border-radius: 8px; font-size: 1.1em; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(214, 51, 108, 0.2); transition: 0.2s;">
+            💖 Guardar Recuerdo en Nuestra Historia
+        </button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('btn-añadir-mas').addEventListener('click', function() {
+        var contenedor = document.getElementById('contenedor-multimedia');
+        var nuevoBloque = document.createElement('div');
+        nuevoBloque.className = 'bloque-multimedia';
+        nuevoBloque.style = 'background: #fff0f3; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px dashed #ffb3c6;';
+        
+        nuevoBloque.innerHTML = `
+            <label style="display: block; font-size: 0.9em; margin-bottom: 5px; font-weight: bold; color: #d6336c;">Selecciona un archivo:</label>
+            <input type="file" name="archivos" accept="image/*,video/*" style="margin-bottom: 10px;" required>
+            <input type="text" name="pies_de_foto" placeholder="Escribe un pie de foto o recuerdo bonito..." style="width: 93%; padding: 8px; border: 1px solid #ced4da; border-radius: 6px; font-size: 0.9em;">
+        `;
+        
+        contenedor.appendChild(nuevoBloque);
+    });
+</script>
+{% endblock %}
