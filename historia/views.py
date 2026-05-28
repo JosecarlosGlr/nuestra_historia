@@ -1,4 +1,13 @@
 from django.shortcuts import render
 
-def pantalla_bienvenida(request):
-    return render(request, 'historia/bienvenida.html')
+def bienvenida(request):
+    if request.method == 'POST':
+        palabra_secreta = request.POST.get('password', '')
+        
+        if palabra_secreta.lower() == '506':
+            return render(request, 'historia/bienvenida.html')
+        else:
+            return render(request, 'historia/login.html', {'error': 'Esa no es la palabra correcta...'})
+    
+    # Si es la primera vez que entra a la web, le mostramos el candado
+    return render(request, 'historia/login.html')

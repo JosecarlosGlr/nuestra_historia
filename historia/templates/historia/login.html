@@ -1,0 +1,21 @@
+{% extends 'historia/base.html' %}
+
+{% block content %}
+<div class="contenedor-pantalla-completa">
+    <div class="tarjeta-bienvenida">
+        <h1>Un lugar secreto</h1>
+        <p>Introduce la palabra mágica para entrar:</p>
+        
+        <form method="POST" action="">
+            {% csrf_token %}
+            <input type="password" name="password" style="padding: 12px; margin-bottom: 20px; width: 85%; border-radius: 10px; border: 1px solid #ffb3c6; text-align: center; font-size: 1.1em; font-family: 'Segoe UI', sans-serif;" placeholder="Palabra mágica" required>
+            <br>
+            <button type="submit" class="btn-entrar">Desbloquear</button>
+        </form>
+
+        {% if error %}
+            <p style="color: #d6336c; margin-top: 15px; font-weight: bold; font-style: normal;">{{ error }}</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
