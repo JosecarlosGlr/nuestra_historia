@@ -9,5 +9,4 @@ def bienvenida(request):
         else:
             return render(request, 'historia/login.html', {'error': 'Esa no es la palabra correcta...'})
     
-    # Si es la primera vez que entra a la web, le mostramos el candado
     return render(request, 'historia/login.html')
