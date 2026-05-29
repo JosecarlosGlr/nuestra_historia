@@ -4,10 +4,14 @@ from .models import Recuerdo, MultimediaRecuerdo
 
 
 def bienvenida(request):
+    if request.session.get('acceso_concedido'):
+        return render(request, 'historia/bienvenida.html')
+        
     if request.method == 'POST':
         palabra_secreta = request.POST.get('password', '')
         
-        if palabra_secreta.lower() == '506':
+        if palabra_secreta.lower() == 'admin':
+            request.session['acceso_concedido'] = True
             return render(request, 'historia/bienvenida.html')
         else:
             return render(request, 'historia/login.html', {'error': 'Esa no es la palabra correcta...'})
