@@ -5,11 +5,11 @@
     <h1 style="color: #d6336c; text-align: center;">{{ recuerdo.titulo }}</h1>
     <a href="{% url 'bienvenida' %}" style="display: block; text-align: center; margin-bottom: 30px; color: #ff8fab; text-decoration: none; font-weight: bold;">⬅ Volver a la línea de tiempo</a>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; margin-bottom: 40px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 30px; margin-bottom: 40px;">
         {% for item in galeria %}
             <div style="border-radius: 12px; overflow: hidden; box-shadow: 0 6px 15px rgba(0,0,0,0.08); background: white; display: flex; flex-direction: column; align-items: center; padding-bottom: 20px;">
                 
-                <div style="width: 100%; height: 280px; background: #f8f9fa; display: flex; justify-content: center; align-items: center; overflow: hidden;">
+                <div style="width: 100%; height: 400px; background: #f8f9fa; display: flex; justify-content: center; align-items: center; overflow: hidden;">
                     {% if item.tipo == 'imagen' %}
                         <img src="{{ item.archivo.url }}" style="width: 100%; height: 100%; object-fit: contain;">
                     {% else %}
@@ -100,5 +100,30 @@
             }
         }
     }
+
+    // --- MAGIA PARA EL AUDIO Y LOS VÍDEOS ---
+    document.addEventListener("DOMContentLoaded", function() {
+        // Buscamos la música de fondo (usando el ID que pusiste en tu código)
+        var musicaFondo = document.getElementById("musica-fondo");
+        
+        // Buscamos todos los vídeos que hay en el álbum
+        var todosLosVideos = document.querySelectorAll("video");
+        
+        todosLosVideos.forEach(function(video) {
+            // Cuando le des al PLAY a un vídeo...
+            video.addEventListener("play", function() {
+                if (musicaFondo) {
+                    musicaFondo.pause(); // Pausamos la música
+                }
+            });
+            
+            // Cuando le des a PAUSA al vídeo (o se termine)...
+            video.addEventListener("pause", function() {
+                if (musicaFondo) {
+                    musicaFondo.play(); // Volvemos a poner la canción
+                }
+            });
+        });
+    });
 </script>
 {% endblock %}

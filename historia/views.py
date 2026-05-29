@@ -10,7 +10,7 @@ def bienvenida(request):
     if request.method == 'POST':
         palabra_secreta = request.POST.get('password', '')
         
-        if palabra_secreta.lower() == 'admin':
+        if palabra_secreta.lower() == '506':
             request.session['acceso_concedido'] = True
             return render(request, 'historia/bienvenida.html')
         else:
