@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from datetime import date
 from .models import Recuerdo, MultimediaRecuerdo
 
@@ -84,3 +84,13 @@ def ver_album(request, nombre_album):
         'recuerdo': recuerdo,
         'galeria': galeria
     })
+
+def borrar_foto(request, foto_id):
+    # Buscamos el recuerdo exacto en la base de datos
+    foto = get_object_or_404(MultimediaRecuerdo, id=foto_id)
+    
+    # Lo eliminamos (esto lo borrará de Neon y de Cloudinary)
+    foto.delete()
+    
+    # Este truco devuelve a la usuaria a la misma página del álbum donde estaba
+    return redirect(request.META.get('HTTP_REFERER', 'bienvenida'))
