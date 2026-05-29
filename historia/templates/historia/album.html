@@ -61,17 +61,6 @@
 </div>
 
 <script>
-    document.getElementById('btn-añadir-mas').addEventListener('click', function() {
-        var contenedor = document.getElementById('contenedor-multimedia');
-        var nuevoBloque = document.createElement('div');
-        nuevoBloque.className = 'bloque-multimedia';
-        nuevoBloque.style = 'background: #fff0f3; padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px dashed #ffb3c6;';
-        nuevoBloque.innerHTML = `
-            <input type="file" name="archivos" accept="image/*,video/*" style="margin-bottom: 10px;" required>
-            <input type="text" name="pies_de_foto" placeholder="Escribe un pie de foto o recuerdo bonito..." style="width: 93%; padding: 8px; border: 1px solid #ced4da; border-radius: 6px;">
-        `;
-        contenedor.appendChild(nuevoBloque);
-    });
 
     document.getElementById('btn-añadir-mas').addEventListener('click', function() {
         var contenedor = document.getElementById('contenedor-multimedia');
@@ -94,7 +83,7 @@
         
         contenedor.appendChild(nuevoBloque);
     });
-    
+
     function tripleAviso(event, url) {
         // Congelamos el clic para que no borre al instante
         event.preventDefault(); 
